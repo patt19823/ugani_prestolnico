@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Patriciin Country Quiz</title>
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <h1>Welcome to Patricia's quiz!!</h1>
+
+    <form method="post" action="/">
+    {{ photo }}
+    <h2> Name the capital of {{ answer }} </h2>
+
+
+        <input type="text" name="inserted_capital" placeholder="Input the capital city">
+        <button type="submit" name="submit">Submit</button>
+
+    </form>
+
+    <h2> Score: {{ score }} </h2>
+    <h2> {{ respond }} </h2>
+
+
+</body>
+</html>
