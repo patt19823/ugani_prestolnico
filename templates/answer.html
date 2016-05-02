@@ -1,14 +1,59 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+<head lang="en">
     <meta charset="UTF-8">
-    <title>Guessing Ninja</title>
+    <title>Patriciin Country Quiz</title>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-theme.css">
+    <style>
+        .center {
+        text-align: center;
+        }
+        img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto
+        }
+        .input-center{
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1%;
+        }
+
+    </style>
+
 </head>
 <body>
 
+    <div class="container">
+        <div class="center">
+            <div class="row" id="">
+                <div class="col-lg-12">
+                    <div class="page-header">
+                        <h1>Welcome to Patricia's country quiz!</h1>
+                    </div>
+                </div>
 
-<h2> Your score is {{ score }} </h2>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <form method="post" action="/">
+                        {% if respond_correct %}
+                            This is correct
+                        {% else %}
+                            Kenny looks okay --- so far
+                        {% endif %}
+                            <h2> {{ respond_correct }} </h2>
+                            <h2> {{ respond_incorrect }} </h2>
+                            <h2> Your score is {{ score }} </h2>
 
+                            <a href="/" class="btn btn-success" type="submit" name="submit">Play More</a>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

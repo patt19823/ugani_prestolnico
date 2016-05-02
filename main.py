@@ -36,25 +36,28 @@ class MainHandler(BaseHandler):
                 self.photo = country_photo
 
         Germany = Country_data(country_name="Germany", country_capital="Berlin", country_photo="assets/photos/germany.jpg")
-        Finland = Country_data(country_name="Finland", country_capital="Helskinki", country_photo="assets/photos/finland.jpg")
-        Spain = Country_data(country_name="Spain", country_capital="Madrid", country_photo="assets/photos/spain")
-        England = Country_data(country_name="England", country_capital="London", country_photo="assets/photos/england")
-        Turkey = Country_data(country_name="Turkey", country_capital="Ankara", country_photo="assets/photos/turkey")
-
+        Finland = Country_data(country_name="Finland", country_capital="Helsinki", country_photo="assets/photos/finland.jpg")
+        Spain = Country_data(country_name="Spain", country_capital="Madrid", country_photo="assets/photos/spain.jpg")
+        England = Country_data(country_name="England", country_capital="London", country_photo="assets/photos/england.jpg")
+        Turkey = Country_data(country_name="Turkey", country_capital="Ankara", country_photo="assets/photos/turkey.jpg")
 
         countries_list = [Germany, Finland, Spain, England, Turkey]
+
+        #zakaj se vedno prikaze drzava, ki je zadnja v seznamu?!?
+
         for drzava in countries_list:
-            answer = drzava.name
+            name_of_country = drzava.name
             photo = drzava.photo
 
         view_vars = {
-            "answer": answer,
+            "answer": name_of_country,
             "photo": photo,
+            "countries_list": countries_list
         }
         return self.render_template("hello.html", view_vars)
 
     def post(self):
-        inserted_capital = self.request.get("inserted_capital")
+
         class Country_data:
             def __init__(self, country_name, country_capital, country_photo):
                 self.name = country_name
@@ -62,26 +65,30 @@ class MainHandler(BaseHandler):
                 self.photo = country_photo
 
         Germany = Country_data(country_name="Germany", country_capital="Berlin", country_photo="assets/photos/germany.jpg")
-        Finland = Country_data(country_name="Finland", country_capital="Helskinki", country_photo="assets/photos/finland.jpg")
+        Finland = Country_data(country_name="Finland", country_capital="Helsinki", country_photo="assets/photos/finland.jpg")
         Spain = Country_data(country_name="Spain", country_capital="Madrid", country_photo="assets/photos/spain")
         England = Country_data(country_name="England", country_capital="London", country_photo="assets/photos/england")
         Turkey = Country_data(country_name="Turkey", country_capital="Ankara", country_photo="assets/photos/turkey")
 
         countries_list = [Germany, Finland, Spain, England, Turkey]
         score = 0
+
         for drzava in countries_list:
+            inserted_capital = self.request.get("inserted_capital")
             if inserted_capital.capitalize() == drzava.capital:
                 score += 1
-                respond = "Congrats"
+                respond_correct = "Congratulations"
             else:
                 score = score
-                respond = "You Dummy!"
+                respond_incorrect = "You Dummy! This is not correct!",inserted_capital, "is not the capital of",drzava.name
+
         view_vars = {
             "score": score,
-            "respond": respond,
+            "respond_correct": respond_correct,
+            "respond_incorrect": respond_incorrect
         }
 
-        return self.render_template("hello.html", view_vars)
+        return self.render_template("answer.html", view_vars)
 
 
 

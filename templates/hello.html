@@ -4,24 +4,60 @@
     <meta charset="UTF-8">
     <title>Patriciin Country Quiz</title>
 
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-theme.css">
+    <style>
+        .center {
+        text-align: center;
+        }
+        img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto
+        }
+        .input-center{
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1%;
+        }
+
+    </style>
+
 </head>
 <body>
-    <h1>Welcome to Patricia's quiz!!</h1>
 
-    <form method="post" action="/">
-    {{ photo }}
-    <h2> Name the capital of {{ answer }} </h2>
+    <div class="container">
+        <div class="center">
+            <div class="row" id="">
+                <div class="col-lg-12">
+                    <div class="page-header">
+                        <h1>Welcome to Patricia's country quiz!</h1>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+<!-- "{ % for drzava in countries_list %}" zakaj ta for loop prikaze petkrat isto drzavo in ne vsakic eno?-->
+<!-- Kaksna bi tu bila dobra resitev?!?? -->
+                    <img src=" {{ photo }} "  class="img-responsive img-circle" alt="">
+                    <h2>Name the capital of {{ name_of_country }}</h2>
+<!-- "{ % endfor %}" -->
+                    <form method="post" action="/">
+                            <div class="input-group input-center">
+                                <input type="text" name="inserted_capital" placeholder="Input the capital city" class="form-control"  id="srch-term">
+                            </div>
+                            <button class="btn btn-success" type="submit" name="submit">Submit</button>
+                    </form>
 
 
-        <input type="text" name="inserted_capital" placeholder="Input the capital city">
-        <button type="submit" name="submit">Submit</button>
+                </div>
 
-    </form>
-
-    <h2> Score: {{ score }} </h2>
-    <h2> {{ respond }} </h2>
-
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
+
+<!--{% for drzava in countries_list %} zakaj ta for loop prikaze petkrat isto drzavo in ne vsakic eno?-->
+                        <!-- Kaksna bi tu bila dobra resitev?!?? -->
+<!--{% endfor %} -->
