@@ -50,7 +50,7 @@ class MainHandler(BaseHandler):
             photo = drzava.photo
 
         view_vars = {
-            "answer": name_of_country,
+            "name_of_country": name_of_country,
             "photo": photo,
             "countries_list": countries_list
         }
@@ -77,15 +77,18 @@ class MainHandler(BaseHandler):
             inserted_capital = self.request.get("inserted_capital")
             if inserted_capital.capitalize() == drzava.capital:
                 score += 1
-                respond_correct = "Congratulations"
+                respond = "Congratulations! Your answer was correct!"
             else:
                 score = score
-                respond_incorrect = "You Dummy! This is not correct!",inserted_capital, "is not the capital of",drzava.name
+                respond = "You dummy! The capital of",drzava.name, "is", drzava.capital
+                #kako to boljse resiti???
 
         view_vars = {
             "score": score,
-            "respond_correct": respond_correct,
-            "respond_incorrect": respond_incorrect
+            "drzava.name": drzava.name,
+            "drzava.capital": drzava.capital,
+            "respond": respond,
+
         }
 
         return self.render_template("answer.html", view_vars)
